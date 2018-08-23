@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleItemComments from '../../containers/ArticleCommentsContainer';
+import ArticleCommentsContainer from '../../containers/ArticleCommentsContainer';
 
 export default class ArticleItemComponent extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ export default class ArticleItemComponent extends Component {
     }
 
     return (
-      <ArticleItemComments />
+      <ArticleCommentsContainer articleId={this.props.id} />
     )
   }
 

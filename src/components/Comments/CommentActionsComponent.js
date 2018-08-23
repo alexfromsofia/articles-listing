@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
 export default class CommentActionsComponent extends Component {
-  render() {
-    const { onSubmit } = this.props;
+  constructor() {
+    super();
 
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
+  handleSubmit() {
+    const text = this.textarea.value;
+
+    this.props.onSubmit({ text })
+    this.textarea.value = '';
+  }
+  
+  render() {
     return (
       <div>
-        <textarea name="" id="" cols="30" rows="10" />
-        <button onClick={onSubmit}>Submit comment</button>
+        <textarea ref={(node) => {this.textarea = node;}}  />
+        <button onClick={this.handleSubmit}>Submit comment</button>
       </div>
     )
   }

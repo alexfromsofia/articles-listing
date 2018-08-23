@@ -7,8 +7,18 @@ import CommentItemComponent from '../components/Comments/CommentItemComponent';
 import CommentActionsComponent from '../components/Comments/CommentActionsComponent';
 
 class ArticleCommentsContainer extends Component {
-  handleCommentSubmit(commentId, parentCommentId) {
-    this.props.onSubmitComment({ commentId, parentCommentId })
+  constructor() {
+    super();
+
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+  }
+  
+  handleCommentSubmit({ parentCommentId = null, text = '' }) {
+    const { articleId } = this.props;
+    
+    if (!text) return
+
+    this.props.onSubmitComment({ articleId, parentCommentId, text })
   }
 
   renderComments() {
@@ -26,7 +36,7 @@ class ArticleCommentsContainer extends Component {
     })
   }
 
-  renderComentActions() {
+  renderCommentActions() {
     return (
       <CommentActionsComponent onSubmit={this.handleCommentSubmit} />
     )
@@ -35,7 +45,7 @@ class ArticleCommentsContainer extends Component {
   render() {
     return (
       <div>
-        {this.renderComentActions()}
+        {this.renderCommentActions()}
         Comments:
         {this.renderComments()}
       </div>
