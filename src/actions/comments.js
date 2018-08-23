@@ -1,0 +1,24 @@
+import { loadComments } from '../api/index';
+import { arrangeById } from '../utils';
+
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+
+
+export const fetchArticleComments = (options) => (dispatch, getState) => {
+  loadComments(options).then((response) => {
+    const { data } = response;
+    const commentsById = arrangeById(data);
+
+    dispatch({
+      type: FETCH_COMMENTS,
+      payload: {
+        commentsById,
+        commentsIds: Object.keys(commentsById),
+      },
+    })
+  })
+}
+
+export const submitComment = ({ commentId, parentCommentId }) => (dispatch, getState) => {
+  debugger
+}
