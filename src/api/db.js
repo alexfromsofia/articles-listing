@@ -28,7 +28,7 @@ exports.find = function(table, filter = {}, { offset = 0, limit = tables[table].
     const filterKeys = Object.keys(filter);
 
     for (const filterKey of filterKeys) {
-      if (row[filterKey] != filter[filterKey]) {
+      if (row[filterKey] !== filter[filterKey]) {
         return false;
       }
     }

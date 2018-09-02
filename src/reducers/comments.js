@@ -8,7 +8,16 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COMMENTS:
-      return action.payload
+      return Object.assign({}, state, {
+        commentsById: {
+          ...state.commentsById,
+          ...action.payload.commentsById,
+        },
+        commentsIds: [
+          ...state.commentsIds,
+          ...action.payload.commentsIds,
+        ]
+      });
     case ADD_COMMENT:
       const { payload } = action;
       const { commentsIds } = state;
@@ -16,12 +25,12 @@ export default (state = initialState, action) => {
         commentsById: Object.assign({}, state.commentsById, {
           [payload.id]: { ...payload }
         })
-      })
+      });
 
       return {
         ...commentsById,
         commentsIds: [...commentsIds, payload.id],
-      }
+      };
 
     default:
       return state

@@ -1,28 +1,52 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.article-item {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-item h1 {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.article-comments-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.comment-actions {
+  display: flex;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  background: #eaeaea;
   padding: 20px;
-  color: white;
+  margin-bottom: 20px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.comment-header {
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.comment-info {
+  display: flex;
 }

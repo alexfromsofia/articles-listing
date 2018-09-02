@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 
 import { fetchInitialArticles } from '../actions/articles';
 import { fetchArticleComments } from '../actions/comments';
-import ArticleItem from '../components/Articles/ArticleItemComponent';
+import ArticleItem from '../components/Articles/ArticleItem';
 
-class ArticlesContainer extends Component {
+class Articles extends Component {
   componentDidMount() {
     this.handleFetchInitialArticle()
   }
 
-  handleFetchInitialArticle = () => {
+  handleFetchInitialArticle() {
     this.props.onFetchInitialArticles();
-  }
+  };
 
   render() {
     const { articlesIds, articlesById, onFetchArticleComments } = this.props;
@@ -24,7 +24,7 @@ class ArticlesContainer extends Component {
         key: `article-${i}`,
         onFetchArticleComments,
         ...articlesById[id],
-      }
+      };
 
       return (
         <ArticleItem {...propsToPass} />
@@ -36,11 +36,11 @@ class ArticlesContainer extends Component {
 const mapStateToProps = state => ({
   articlesById: state.articles.articlesById,
   articlesIds: state.articles.articlesIds,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   onFetchInitialArticles: () => dispatch(fetchInitialArticles()),
   onFetchArticleComments: (options) => dispatch(fetchArticleComments(options))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticlesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);

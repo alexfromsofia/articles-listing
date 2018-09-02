@@ -18,14 +18,14 @@ export const fetchArticleComments = (options) => (dispatch, getState) => {
       },
     })
   })
-}
+};
 
 export const submitComment = ({ articleId = null, parentCommentId = null, text = null, }) =>
-  (dispatch, getState) => {    
+  (dispatch, getState) => {
     addComment({ text, parentCommentId, articleId }).then((response) => {
       dispatch({
         type: ADD_COMMENT,
         payload: response.data,
       })
     })
-  }
+  };

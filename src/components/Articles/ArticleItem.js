@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ArticleCommentsContainer from '../../containers/ArticleCommentsContainer';
+import ArticleCommentsContainer from '../../containers/ArticleComments';
 
-export default class ArticleItemComponent extends Component {
+export default class ArticleItem extends Component {
   componentDidMount() {
     const { commentsCount, onFetchArticleComments } = this.props;
 
@@ -28,8 +28,10 @@ export default class ArticleItemComponent extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.title}</h1>,
+      <div className="article-item">
+        <h1>{this.props.title}</h1>
+        <img src={this.props.imageUrl} alt="" />
+        <p>{this.props.text}</p>
         {this.renderComments()}
       </div>
     )
